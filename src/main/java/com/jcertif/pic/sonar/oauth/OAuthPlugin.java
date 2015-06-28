@@ -35,6 +35,8 @@ import org.sonar.api.Property;
 import org.sonar.api.ServerExtension;
 import org.sonar.api.SonarPlugin;
 import org.sonar.plugins.oauth.api.OAuthClient;
+import org.sonar.colorizer.CaseInsensitiveKeywordsTokenizer;
+import org.sonar.api.BatchComponent;
 
 /**
  *
@@ -67,6 +69,9 @@ public class OAuthPlugin extends SonarPlugin {
 
         @Override
         public Object provide() {
+            List<Class> myUnusedVar = Lists.newArrayList();
+            String myUnusedStr = null;
+
             List<Class> extensions = Lists.newArrayList();
             if (isRealmEnabled()) {
                 Preconditions.checkState(settings.getBoolean(CoreProperties.CORE_AUTHENTICATOR_CREATE_USERS), "Property sonar.authenticator.createUsers must be set to true.");
