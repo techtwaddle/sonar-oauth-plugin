@@ -69,9 +69,6 @@ public class OAuthPlugin extends SonarPlugin {
 
         @Override
         public Object provide() {
-            List<Class> myUnusedVar = Lists.newArrayList();
-            String myUnusedStr = null;
-
             List<Class> extensions = Lists.newArrayList();
             if (isRealmEnabled()) {
                 Preconditions.checkState(settings.getBoolean(CoreProperties.CORE_AUTHENTICATOR_CREATE_USERS), "Property sonar.authenticator.createUsers must be set to true.");
