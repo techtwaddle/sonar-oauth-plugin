@@ -35,6 +35,7 @@ import org.sonar.api.Property;
 import org.sonar.api.ServerExtension;
 import org.sonar.api.SonarPlugin;
 import org.sonar.plugins.oauth.api.OAuthClient;
+import org.sonar.api.BatchComponent;
 
 /**
  *
