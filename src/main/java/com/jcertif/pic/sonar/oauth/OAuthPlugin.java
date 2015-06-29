@@ -35,6 +35,8 @@ import org.sonar.api.Property;
 import org.sonar.api.ServerExtension;
 import org.sonar.api.SonarPlugin;
 import org.sonar.plugins.oauth.api.OAuthClient;
+import org.sonar.api.BatchComponent;
+import org.apache.commons.codec.BinaryDecoder;
 
 /**
  *
@@ -67,9 +69,10 @@ public class OAuthPlugin extends SonarPlugin {
 
         @Override
         public Object provide() {
+            String str = null;
             List<Class> extensions = Lists.newArrayList();
             if (isRealmEnabled()) {
-                Preconditions.checkState(settings.getBoolean(CoreProperties.CORE_AUTHENTICATOR_CREATE_USERS), "Property sonar.authenticator.createUsers must be set to true.");
+                Preconditions.checkState(settings.getBoolean(CoreProperties.CORE_AUTHENTICATOR_CREATE_USERS), "Property sonar.authenticator.createUsers shall be set to true.");
                 Preconditions.checkArgument(StringUtils.isNotBlank(Settings.PROVIDER_ID), "Property is missing : " + Settings.PROVIDER_ID);
                 extensions.add(OAuthSecurityRealm.class);
                 extensions.add(getOAuthClient());
